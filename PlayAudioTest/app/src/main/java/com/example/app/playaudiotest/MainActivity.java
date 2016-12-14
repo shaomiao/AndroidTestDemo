@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -35,8 +36,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private void initMediaPlayer() {
         try {
+            Log.e("MainActivity", "initMediaPlayer: "+Environment.getExternalStorageDirectory() );
             File file = new File(Environment.getExternalStorageDirectory(), "music.mp3");
             // File file = new File(this.getFilesDir(), "music.mp3");
+            Log.e("MainActivity", "initMediaPlayer: "+file.getPath());
             mediaPlayer.setDataSource(file.getPath()); // 指定音频文件的路径
             mediaPlayer.prepare(); // 让MediaPlayer进入准备状态
         } catch (Exception e) {
